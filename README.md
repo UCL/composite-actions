@@ -1,6 +1,6 @@
-# GitHub actions Composite Actions
-Useful composite actions that can be used to reduce code duplication in
-GitHub actions configuration files.
+# Composite actions for GitHub Actions
+Useful actions that can be used to reduce code duplication in GitHub Actions
+configuration.
 
 ## What is a composite action?
 A composite action is a series of steps that can be used as a step itself in another
