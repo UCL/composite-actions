@@ -1,6 +1,14 @@
 name: Test python/tox
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'python/tox/**'
+      - '.github/workflows/test-python-tox.yml'
+  pull_request:
+    paths:
+      - 'python/tox/**'
+      - '.github/workflows/test-python-tox.yml'
 
 jobs:
   test-python-tox:
