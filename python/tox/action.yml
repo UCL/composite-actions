@@ -1,0 +1,28 @@
+name: 'Python tox tests'
+description: 'Run Python tests using tox'
+
+inputs:
+  python-version:
+    description: 'Python version to test with'
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ inputs.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install tox
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install tox tox-gh-actions
+
+    - name: Run tests
+      shell: bash
+      run: tox
