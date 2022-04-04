@@ -1,3 +1,5 @@
+:exclamation: This repository is a work-in-progress. **Do not rely on these composite actions** at the moment! :exclamation:
+
 # Composite actions for GitHub Actions
 Useful actions that can be used to reduce code duplication in GitHub Actions
 configuration.
