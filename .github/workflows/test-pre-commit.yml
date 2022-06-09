@@ -2,13 +2,7 @@ name: Test pre-commit
 
 on:
   push:
-    paths:
-      - 'pre-commit/**'
-      - '.github/workflows/test-pre-commit.yml'
   pull_request:
-    paths:
-      - 'pre-commit/**'
-      - '.github/workflows/test-pre-commit.yml'
 
 jobs:
   test-pre-commit:
