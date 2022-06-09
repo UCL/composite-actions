@@ -11,7 +11,7 @@ on:
       - '.github/workflows/test-pre-commit.yml'
 
 jobs:
-  test-python-build-sdist:
+  test-pre-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
