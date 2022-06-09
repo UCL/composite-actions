@@ -1,4 +1,4 @@
-name: Test python/tox
+name: Test python/build_sdist
 
 on:
   push:
