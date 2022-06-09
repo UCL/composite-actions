@@ -1,5 +1,3 @@
-:exclamation: This repository is a work-in-progress. **Do not rely on these composite actions** at the moment! :exclamation:
-
 # Composite actions for GitHub Actions
 Useful actions that can be used to reduce code duplication in GitHub Actions
 configuration.
@@ -17,18 +15,37 @@ jobs:
     name: Run linting
     runs-on: ubuntu-latest
     steps:
-      - uses: ucl/gh-actions/python/tox@v1
+      - uses: ucl/composite-actions/python/tox@v1
         with:
           python-version: '3.10'
 ```
 Any inputs are specified using `with` under `uses`. Each action is documented
 in README files in their respective folders in this repository.
 
+## Versioning
+Within a major version (e.g. v1, v2) all actions will be backwards compatible.
+New actions or bugfixes to existing actions will be released under a new minor version
+(e.g. v1.1).
 
-## Adding new actions
+## Development
+### Adding new actions
 To add a new action please open a pull request. The action itself should
 live under `<language>/<description>/action.yml`, e.g.
 `python/tox-tests/action.yml`. Alongside the action file should be a README
 that documents what the action does and any inputs/outputs. Please also add a
 test in `.github/workflows/test-<language>-<description>.yml` to check that
 the action works as intended.
+
+
+### Releasing a new version
+
+1. Create a new release through the GitHub releases UI. Make sure you add the appropriate tag to the release.
+2. If incrementing a minor version (ie. going from 2.1 > 2.2), move the major tag (e.g. <tagname>=v2) to the most recent tag:
+
+```bash
+git push origin :refs/tags/<tagname>
+git tag -fa <tagname>
+git push upstream main --tags
+```
+
+  This means any actions specifying (e.g.) `v2` will automatically use the new minor version of the actions.
