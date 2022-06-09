@@ -21,7 +21,7 @@ runs:
 
     - name: Build sdist
       shell: bash
-      run: pipx run build --sdist ${{ inputs.package-path }}
+      run: pipx run build --outdir dist/ --sdist ${{ inputs.package-path }}
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
