@@ -26,5 +26,5 @@ runs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        path: dist/*.tar.gz
+        path: dist/*
         if-no-files-found: error
