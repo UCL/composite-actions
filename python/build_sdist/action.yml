@@ -1,5 +1,5 @@
 name: 'Build sdist'
-description: 'Build a Python package source distribution.'
+description: 'Build a Python package source distribution and pure-Python wheel.'
 
 
 inputs:
@@ -19,12 +19,12 @@ runs:
       with:
         python-version: "3.10"
 
-    - name: Build sdist
+    - name: Build sdist and wheel
       shell: bash
-      run: pipx run build --outdir dist/ --sdist ${{ inputs.package-path }}
+      run: pipx run build --outdir dist/ ${{ inputs.package-path }}
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        path: dist/*.tar.gz
+        path: dist/*
         if-no-files-found: error
