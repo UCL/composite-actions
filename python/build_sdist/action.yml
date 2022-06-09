@@ -1,0 +1,30 @@
+name: 'Build sdist'
+description: 'Build a Python package source distribution.'
+
+
+inputs:
+  package-path:
+    description: 'Path to package'
+    required: false
+    type: string
+    default: '.'
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+
+    - name: Build sdist
+      shell: bash
+      run: pipx run build --outdir dist/ --sdist ${{ inputs.package-path }}
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        path: dist/*.tar.gz
+        if-no-files-found: error

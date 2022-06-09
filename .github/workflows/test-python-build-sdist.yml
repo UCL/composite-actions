@@ -1,0 +1,20 @@
+name: Test python/tox
+
+on:
+  push:
+    paths:
+      - 'python/build_sdist/**'
+      - '.github/workflows/test-python-build-sdist.yml'
+  pull_request:
+    paths:
+      - 'python/build_sdist/**'
+      - '.github/workflows/test-python-build-sdist.yml'
+
+jobs:
+  test-python-build-sdist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./python/build_sdist
+        with:
+          package-path: 'tests/python/test_package'
