@@ -5,7 +5,7 @@ description: 'Run linting using pre-commit'
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - uses: actions/setup-python@v3
       with:
